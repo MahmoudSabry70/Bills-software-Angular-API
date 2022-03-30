@@ -1,0 +1,141 @@
+<div class="confirm" [style.display]="showConfirm ? 'block' : 'none'">
+  <img src="assets/img/check-correct.gif" alt="" />
+</div>
+<section id="horizontal-form-layouts">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-wrap bar-success">
+            <h4 class="card-title" id="horz-layout-basic">Type Data Form</h4>
+          </div>
+          <p class="mb-0">
+            This is the basic horizontal form with labels on left and cost
+            estimation form is the default position.
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+            <form
+              class="form form-horizontal"
+              [formGroup]="typeForm"
+              (submit)="addType()"
+            >
+              <div class="form-group row" style="align-items: baseline">
+                <label class="col-md-3 label-control" for="companyName"
+                  >COMPANY NAME</label
+                >
+                <div class="col-md-9">
+                  <select
+                    class="form-control"
+                    name="cat"
+                    id="companyName"
+                    formControlName="companyId"
+                  >
+                    <option value="" selected>Select Company</option>
+                    <option
+                      *ngFor="let company of companyList"
+                      [value]="company.id"
+                    >
+                      {{ company.name }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="
+                      companyId.touched ||
+                      typeName.touched ||
+                      typeForm.touched ||
+                      typeForm.invalid
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="(companyId.errors?.['required']&& typeName.touched)"
+                      >Company Name Is Required</span
+                    >
+                    <span
+                      class="text-danger"
+                      *ngIf="(companyId.errors?.['required']&& companyId.touched)"
+                      >Company Name Is Required</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 label-control" for="typeName"
+                  >TYPE NAME</label
+                >
+                <div class="col-md-9">
+                  <input
+                    id="typeName"
+                    class="form-control"
+                    formControlName="typeName"
+                    (change)="updateTypeNameValidators()"
+                  />
+                  <div
+                    *ngIf="
+                      companyId.invalid ||
+                      typeName.touched ||
+                      typeForm.touched ||
+                      (typeForm.invalid &&
+                        typeForm.touched &&
+                        companyId.touched)
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="(typeName.errors?.['required']&& typeName.touched)"
+                      >Type Name Is Requir</span
+                    >
+                    <span
+                      class="text-danger"
+                      *ngIf="typeForm.errors?.['alreadyExist']"
+                      >this Name is already exist
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 label-control" for="notes">Notes</label>
+                <div class="col-md-9">
+                  <textarea
+                    id="notes"
+                    formControlName="notes"
+                    rows="5"
+                    class="form-control"
+                  ></textarea>
+                  <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="form-actions" style="border-top: none">
+                <a class="btn btn-danger mr-1">
+                  <i class="icon-trash"></i> Cancel
+                </a>
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  [disabled]="typeForm.invalid"
+                >
+                  <i class="icon-note"></i> Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section>
+  {{ typeForm.errors | json }}
+  <div>
+    Form Errors:{{ typeForm.errors?.['alreadyExist'] | json }}
+    {{ typeForm.valid }}
+    <br />
+    ttttt : {{ typeName.errors | json }}
+    <br />
+    ccccc : {{ companyId.errors | json }}
+  </div>
+</section> -->

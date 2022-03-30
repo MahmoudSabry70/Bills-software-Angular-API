@@ -1,0 +1,96 @@
+<div class="confirm" [style.display]="showConfirm ? 'block' : 'none'">
+  <img src="assets/img/check-correct.gif" alt="" />
+</div>
+<section id="horizontal-form-layouts">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-wrap bar-success">
+            <h4 class="card-title" id="horz-layout-basic">Company Data Form</h4>
+          </div>
+          <p class="mb-0">
+            This is the basic horizontal form with labels on left and cost
+            estimation form is the default position.
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+            <form
+              class="form form-horizontal"
+              [formGroup]="companyForm"
+              (ngSubmit)="addCompany()"
+            >
+              <!-- <div *ngIf="addAlert" class="alert alert-success">
+                The company has been added
+              </div> -->
+              <div class="form-group row">
+                <label for="Name" class="col-md-3 label-control">NAME</label>
+                <div class="col-md-9">
+                  <input
+                    id="Name"
+                    name="Name"
+                    class="form-control"
+                    formControlName="companyName"
+                  />
+                  <div
+                    *ngIf="
+                      companyName.valid ||
+                      companyName.touched ||
+                      companyForm.touched
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="companyName.errors?.['required']"
+                      >Company Name Is Required</span
+                    >
+                    <span
+                      class="text-danger"
+                      *ngIf="companyName.errors?.['alreadyExist']"
+                      >Company Name is already exist
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="Notes" class="col-md-3 label-control">Notes</label>
+                <div class="col-md-9">
+                  <textarea
+                    id="Notes"
+                    name="Notes"
+                    rows="5"
+                    class="form-control"
+                    formControlName="notes"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-actions" style="border-top: none">
+                <a class="btn btn-danger mr-1">
+                  <i class="icon-trash"></i> Cancel
+                </a>
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  [disabled]="companyForm.invalid"
+                >
+                  <i class="icon-note"></i> Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section>
+  {{ companyForm.errors | json }}
+  <div>
+    Form Errors:{{ companyName.errors?.['alreadyExist'] | json }}
+    <br />
+    <br />
+    ccccc : {{ companyName.errors | json }}
+  </div>
+</section> -->

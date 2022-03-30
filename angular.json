@@ -48,14 +48,32 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/app-assets/fonts/feather/style.min.css",
+              "src/assets/app-assets/fonts/simple-line-icons/style.css",
+              "src/assets/app-assets/fonts/font-awesome/css/font-awesome.min.css",
+              "src/assets/app-assets/vendors/css/perfect-scrollbar.min.css",
+              "src/assets/app-assets/vendors/css/prism.min.css",
+              "src/assets/app-assets/vendors/css/chartist.min.css",
+              "src/assets/app-assets/css/app.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/app-assets/vendors/js/core/popper.min.js",
+              "src/assets/app-assets/vendors/js/core/jquery-3.3.1.min.js",
+              "src/assets/app-assets/vendors/js/core/bootstrap.min.js",
+              "src/assets/app-assets/vendors/js/perfect-scrollbar.jquery.min.js",
+              "src/assets/app-assets/vendors/js/prism.min.js",
+              "src/assets/app-assets/vendors/js/jquery.matchHeight-min.js",
+              "src/assets/app-assets/vendors/js/screenfull.min.js",
+              "src/assets/app-assets/vendors/js/pace/pace.min.js",
+              "src/assets/app-assets/vendors/js/chartist.min.js",
+              "src/assets/app-assets/js/app-sidebar.js",
+              "src/assets/app-assets/js/notification-sidebar.js",
+              "src/assets/app-assets/js/customizer.js",
+              "src/assets/app-assets/js/dashboard-ecommerce.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -116,13 +134,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }
